@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Translation Settings</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark {
+      background-color: #333;
+      color: #fff;
+    }
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    body.dark input[type="text"], body.dark input[type="password"] {
+      background-color: #555;
+      color: #fff;
+      border-color: #777;
+    }
+    .theme-toggle {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .theme-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .theme-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .theme-slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .theme-slider {
+      background-color: #2196F3;
+    }
+    input:checked + .theme-slider:before {
+      transform: translateX(26px);
+    }
+    .theme-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>AI Translation Settings</h2>
+  <label for="apiKey">API Key:</label>
+  <input type="password" id="apiKey">
+  <label for="apiHost">API Host:</label>
+  <input type="text" id="apiHost">
+  <label for="systemPrompt">System Prompt:</label>
+  <input type="text" id="systemPrompt">
+  <label for="targetLanguage">Target Language:</label>
+  <input type="text" id="targetLanguage">
+  <label for="model">Model:</label>
+  <input type="text" id="model">
+  <div class="theme-toggle">
+    <span class="theme-label">Dark</span>
+    <label class="theme-switch">
+      <input type="checkbox" id="themeMode">
+      <span class="theme-slider"></span>
+    </label>
+    <span class="theme-label">Light</span>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
