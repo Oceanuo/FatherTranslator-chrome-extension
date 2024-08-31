@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "FatherTranslator",
   "version": "1.0",
   "description": "A translation extension powered by ChatGPT",
@@ -7,7 +7,7 @@
     "storage",
     "activeTab"
   ],
-  "browser_action": {
+  "action": {
     "default_icon": "fathertranslator.png",
     "default_popup": "popup.html"
   },
@@ -24,6 +24,9 @@
     }
   ],
   "web_accessible_resources": [
-    "fathertranslator.png"
+    {
+      "resources": ["fathertranslator.png"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }
