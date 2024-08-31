@@ -22,6 +22,15 @@ document.addEventListener('mouseup', () => {
   }
 });
 
+document.addEventListener('keydown', (event) => {
+  if (event.altKey && event.shiftKey && event.key === 'A') {
+    const selection = window.getSelection().toString().trim();
+    if (selection) {
+      translateText(selection);
+    }
+  }
+});
+
 function showTranslateButton(text) {
   selectedText = text; 
   if (!translateButton) {
