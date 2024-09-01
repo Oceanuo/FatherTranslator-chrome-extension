@@ -203,3 +203,9 @@ function removeExistingTranslationBoxes() {
   const existingBoxes = document.querySelectorAll('.translation-box');
   existingBoxes.forEach(box => box.remove());
 }
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "translate") {
+    translateText(request.text);
+  }
+});
