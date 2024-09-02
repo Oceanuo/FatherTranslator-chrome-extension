@@ -68,7 +68,7 @@ function hideTranslateButton() {
 async function translateText(text) {
   chrome.storage.sync.get(['apiKey', 'apiHost', 'systemPrompt', 'targetLanguage', 'model'], async (settings) => {
     const apiKey = settings.apiKey;
-    const apiHost = settings.apiHost || 'https://api.openai.com';
+    const apiHost = settings.apiHost || 'https://api.openai.com/v1';
     const systemPrompt = settings.systemPrompt || 'You are a professional, authentic machine translation engine.';
     const targetLanguage = settings.targetLanguage || 'English';
     const model = settings.model || 'gpt-4o-mini';
