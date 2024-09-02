@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   chrome.storage.sync.get(['apiKey', 'apiHost', 'systemPrompt', 'targetLanguage', 'isDark', 'model'], (result) => {
     apiKeyInput.value = result.apiKey || '';
-    apiHostInput.value = result.apiHost || 'https://api.openai.com';
+    apiHostInput.value = result.apiHost || 'https://api.openai.com/v1';
     systemPromptInput.value = result.systemPrompt || 'You are a professional, authentic machine translation engine.';
     targetLanguageInput.value = result.targetLanguage || 'English';
     modelInput.value = result.model || 'gpt-4o-mini'; 
