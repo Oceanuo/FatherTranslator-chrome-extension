@@ -36,7 +36,7 @@ function showTranslateButton(text) {
   if (!translateButton) {
     translateButton = document.createElement('div');
     translateButton.innerHTML = `
-      <img src="${chrome.runtime.getURL('fathertranslator.png')}" alt="Translate" width="30" height="30">
+      <img src="${chrome.runtime.getURL('oceanuotranslate.png')}" alt="Translate" width="30" height="30">
     `;
     translateButton.className = 'translate-button';
     document.body.appendChild(translateButton);
@@ -74,14 +74,14 @@ async function translateText(text) {
     const model = settings.model || 'gpt-4o-mini';
     
     if (!apiKey) {
-      alert('Please set your API key in the FatherTranslator options');
+      alert('Please set your API key in the OceanuoTranslate options');
       return;
     }
     
     const translationBox = showTranslation('Translating...');
     
     try {
-      const response = await fetch(`${apiHost}/v1/chat/completions`, {
+      const response = await fetch(`${apiHost}/chat/completions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

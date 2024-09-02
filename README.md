@@ -1,4 +1,4 @@
-# Translation Extension
+# OceanuoTranslate Extension
 
 This project is a browser extension that provides translation functionality for selected text on web pages.
 

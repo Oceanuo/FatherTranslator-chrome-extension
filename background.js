@@ -1,7 +1,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "translateSelection",
-    title: "Translate with FatherTranslator",
+    title: "Translate with OceanuoTranslate",
     contexts: ["selection"]
   });
 });
