@@ -36,9 +36,9 @@ function showTranslateButton(text) {
   if (!translateButton) {
     translateButton = document.createElement('div');
     translateButton.innerHTML = `
-      <img src="${chrome.runtime.getURL('oceanuotranslate.png')}" alt="Translate" width="30" height="30">
+      <img src="${chrome.runtime.getURL('oceanuotranslate.png')}" alt="Translate">
     `;
-    translateButton.className = 'translate-button';
+    translateButton.className = 'oceanuotranslate-button';
     document.body.appendChild(translateButton);
     
     translateButton.addEventListener('click', () => {
@@ -138,10 +138,10 @@ function showTranslation(initialText) {
   removeExistingTranslationBoxes();
 
   const translationBox = document.createElement('div');
-  translationBox.className = 'translation-box';
+  translationBox.className = 'oceanuotranslate-box';
   translationBox.innerHTML = `
-    <div class="translation-header">
-      <button class="close-button">&times;</button>
+    <div class="oceanuotranslate-header">
+      <button class="oceanuotranslate-close-button">&times;</button>
     </div>
     <p>${initialText}</p>
   `;
@@ -166,7 +166,7 @@ function showTranslation(initialText) {
     translationBox.style.right = '10px';
   }
   
-  const closeButton = translationBox.querySelector('.close-button');
+  const closeButton = translationBox.querySelector('.oceanuotranslate-close-button');
   closeButton.addEventListener('click', () => {
     document.body.removeChild(translationBox);
   });
@@ -200,7 +200,7 @@ function updateTranslation(translationBox, newContent, isReplacing = false) {
 }
 
 function removeExistingTranslationBoxes() {
-  const existingBoxes = document.querySelectorAll('.translation-box');
+  const existingBoxes = document.querySelectorAll('.oceanuotranslate-box');
   existingBoxes.forEach(box => box.remove());
 }
 
