@@ -104,7 +104,10 @@ async function translateText(text) {
 
       while (true) {
         const { done, value } = await reader.read();
-        if (done) break;
+        if (done) {
+          removeEllipsis(translationBox);
+          break;
+        }
         
         buffer += decoder.decode(value, { stream: true });
         const lines = buffer.split('\n');
@@ -125,11 +128,10 @@ async function translateText(text) {
           }
         }
       }
-      const textElement = translationBox.querySelector('p');
-      textElement.textContent = textElement.textContent.replace(/\.\.\.$/, '');
     } catch (error) {
       console.error('Translation error:', error);
       updateTranslation(translationBox, 'Translation failed. Please check your API key and try again.', true);
+      removeEllipsis(translationBox);
     }
   });
 }
@@ -143,7 +145,7 @@ function showTranslation(initialText) {
     <div class="oceanuotranslate-header">
       <button class="oceanuotranslate-close-button">&times;</button>
     </div>
-    <p>${initialText}</p>
+    <p style="white-space: pre-wrap;">${initialText}</p>
   `;
   
   chrome.storage.sync.get(['isDark'], (result) => {
@@ -193,9 +195,10 @@ function updateTranslationBoxTheme(translationBox, isDark) {
 function updateTranslation(translationBox, newContent, isReplacing = false) {
   const textElement = translationBox.querySelector('p');
   if (isReplacing) {
-    textElement.textContent = newContent;
+    textElement.innerHTML = newContent.replace(/\n/g, '<br>');
   } else {
-    textElement.textContent = textElement.textContent.replace(/\.\.\.$/, '') + newContent + '...';
+    const currentContent = textElement.innerHTML.replace(/<br>\.\.\.$/, '');
+    textElement.innerHTML = currentContent + newContent.replace(/\n/g, '<br>') + '<br>...';
   }
 }
 
@@ -209,3 +212,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     translateText(request.text);
   }
 });
+
+function removeEllipsis(translationBox) {
+  const textElement = translationBox.querySelector('p');
+  textElement.innerHTML = textElement.innerHTML.replace(/<br>\.\.\.$/, '');
+}
