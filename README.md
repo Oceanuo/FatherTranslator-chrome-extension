@@ -17,7 +17,7 @@ Ensure you have the following installed:
 1. **Clone the repository**:
   You can clone the repository using git:
    ```bash
-   git clone https://github.com/oceanuo/OceanuoTranslateExtension
+   git clone https://github.com/oceanuo/OceanuoTranslate-extension
    ```
 
 2. **Download the zip**:
